@@ -41,7 +41,7 @@
         preco: { type: Number, required: true },
     })
 
-    const regex = /\/d\/(.*)\/view/g;
+    const regex = \/d\/(.*)\/view|id=(.*);
     const match = regex.exec(props.imagem);
     var xImagemParseada = props.imagem.indexOf("drive") > 1 
       ? "https://drive.google.com/uc?id=" + match?.[1]
