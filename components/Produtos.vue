@@ -31,49 +31,13 @@
     </v-layout>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import { obterProdutos, IItem } from '@/composables/useGoogleSheets'
 
-const produtos = ref([
-  { 
-    id: 1,
-    produto: 'Brinco peixe',
-    preco: 15,
-    imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/imagem-peixe.jpg'
-  },
-  { 
-    id: 2,
-    produto: 'Brinco pirulito',
-    preco: 20,
-    imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/imagem-pirulito.jpg'
-  },
-  { 
-    id: 3,
-    produto: 'Brinco tanjiro',
-    preco: 15,
-    imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/imagem-tanjiro.jpg'
-  },
-  {
-    id: 4,
-    produto: 'Brinco pato',
-    preco: 15,
-    imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/imagem-pato.jpg'
-  },
-  { 
-    id: 5,
-    produto: 'Brinco sorvete',
-    preco: 20,
-    imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/brinco-sorvete.jpg'
-  },
-  { 
-    id: 6,
-    produto: 'Brinco chocolate',
-    preco: 15,
-    imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/imagem-chocolate.jpg'
-  }
-])
+const produtos = ref<IItem[]>(await obterProdutos());
+
 const slides = ref([
- 
   {
     imagem: 'https://raw.githubusercontent.com/AirtonBorges/loja-brincos/main/loja-brincos/src/assets/banner-1.png'
   }

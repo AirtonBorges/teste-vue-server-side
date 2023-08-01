@@ -9,4 +9,10 @@ export default defineNuxtConfig({
       'process.env.DEBUG': false,
     },
   },
+  runtimeConfig: {
+    public: {
+        GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+        SPREAD_SHEET_ID: process.env.SPREAD_SHEET_ID
+    }
+  }
 })
