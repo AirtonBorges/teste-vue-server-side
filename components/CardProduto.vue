@@ -12,7 +12,7 @@
       height="75%"
       cover
       aspect-ratio="16/9"
-      :src="imagem"
+      :src="xImagemParseada"
     >
     </v-img>
     <v-card-title
@@ -34,14 +34,20 @@
   </v-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
     const props = defineProps({
         imagem: { type: String, required: true },
         produto: { type: String, required: true },
         preco: { type: Number, required: true },
     })
-    
-    function onclick() {
+
+    const regex = /\/d\/(.*)\/view/g;
+    const match = regex.exec(props.imagem);
+    var xImagemParseada = props.imagem.indexOf("drive") > 1 
+      ? "https://drive.google.com/uc?id=" + match?.[1]
+      : props.imagem;
+ 
+      function onclick() {
       const texto = `Estou interessado no ${props.produto}`
       window.location.href = `${process.env.WHATSAPP}text=${texto}`;
     }
