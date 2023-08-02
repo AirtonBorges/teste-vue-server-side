@@ -42,9 +42,10 @@
     })
 
     const regex = /d\/(.*)\/view|id=(.*)/gm;
-    const match = regex.exec(props.imagem);
+    const resultadoExec = regex.exec(props.imagem);
+    const match = !!resultadoExec?.[1] ? resultadoExec?.[1] : resultadoExec?.[2];
     var xImagemParseada = props.imagem.indexOf("drive") > 1 
-      ? "https://drive.google.com/uc?id=" + match?.[1]
+      ? "https://drive.google.com/uc?id=" + match
       : props.imagem;
  
       function onclick() {
